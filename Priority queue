@@ -1,0 +1,33 @@
+import heapq
+class PriorityQueue:
+    def __init__(self):
+        self.elements = []
+    def is_empty(self):
+        return len(self.elements) == 0
+    def insert(self, item, priority):
+        heapq.heappush(self.elements, (priority, item))
+    def remove(self):
+        if not self.is_empty():
+            priority, item = heapq.heappop(self.elements)
+            return item
+        else:
+            raise IndexError("remove from empty priority queue")
+    def size(self):
+        return len(self.elements)
+    def display(self):
+        for priority, item in self.elements:
+            print(f"Priority: {priority}, Item: {item}")
+            
+if __name__ == "__main__":
+    pq = PriorityQueue()
+    print("Is the priority queue empty?", pq.is_empty())
+    pq.insert("Task 1", 3)
+    pq.insert("Task 2", 1)
+    pq.insert("Task 3", 2)
+    print("Priority Queue:")
+    pq.display()
+    removed_item = pq.remove()
+    print("Removed item:", removed_item)
+    print("Priority Queue after removal:")
+    pq.display()
+    print("Priority Queue size:", pq.size())
