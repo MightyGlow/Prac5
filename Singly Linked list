@@ -1,0 +1,56 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next_node = None
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def is_empty(self):
+        return self.head is None
+    def append(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next_node is not None:
+                current = current.next_node
+            current.next_node = new_node
+    def prepend(self, data):
+        new_node = Node(data)
+        new_node.next_node = self.head
+        self.head = new_node
+    def delete(self, data):
+        if self.head is None:
+            return
+        if self.head.data == data:
+            self.head = self.head.next_node
+            return
+        current = self.head
+        while current.next_node is not None:
+            if current.next_node.data == data:
+                current.next_node = current.next_node.next_node
+                return
+            current = current.next_node
+    def display(self):
+        current = self.head
+        while current is not None:
+            print(current.data, end=" -> ")
+            current = current.next_node
+        print("None")
+if __name__ == "__main__":
+    linked_list = LinkedList()
+    print("Is the linked list empty?", linked_list.is_empty())
+    linked_list.append(1)
+    linked_list.append(2)
+    linked_list.append(3)
+    print("Linked List:")
+    linked_list.display()
+    linked_list.prepend(0)
+    print("Linked List after prepending 0:")
+    linked_list.display()
+    linked_list.delete(2)
+    print("Linked List after deleting 2:")
+    linked_list.display()
+
+
