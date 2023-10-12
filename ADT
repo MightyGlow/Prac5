@@ -26,7 +26,7 @@ if __name__ == "__main__":
     stack.push(3)
     print("Stack size:", stack.size())
     print("Top element:", stack.peek())
-    popped_item = stack.pop()
-    print("Popped item:", popped_item)
+    print("Popped item:", stack.pop())
     print("Stack size after pop:", stack.size())
     print("Is the stack empty now?", stack.is_empty())
+
