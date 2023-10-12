@@ -21,6 +21,12 @@ class Stack:
         for item in self.items:
             print(item, end=" ")
         print()
+    def traverse(self):
+           if not self.is_empty():
+             for x in self.items:
+                 print(x)
+           else:
+             print("stack is empty")
 
     
 if __name__ == "__main__":
